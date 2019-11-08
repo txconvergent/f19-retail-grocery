@@ -10,13 +10,17 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
 import { MonoText } from '../components/StyledText';
-//import { GroceryListsRow } from '../components/GroceryListsRow';
+import GroceryListsRow from '../components/GroceryListsRow';
+import SortableList from 'react-native-sortable-list';
+
 
 function renderRow(item) {
-  return null
-//  return GroceryListsRow(item)
+  return (
+    <GroceryListsRow 
+      item={item}/>
+  );
+
 }
 
 export default function HomeScreen() {
