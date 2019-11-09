@@ -9,12 +9,17 @@ export default class GroceryListsRow extends React.Component {
   constructor(props) {
     super(props);
     this.name = props.item.Name;
+    this.navigation = props.navigation;
+  }  
+
+  navigateToList() {
+//    this.props.navigation.navigate('List');
   }
 
   render() {
   	return (
       <View style={styles.container}>
-        <Text style={styles.textStyle}>
+        <Text style={styles.textStyle} onclick={this.navigateToList()}>
           {this.name}
         </Text>
       </View>

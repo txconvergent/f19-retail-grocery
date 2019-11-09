@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
+  Button,
   Image,
   FlatList,
   Platform,
@@ -12,42 +13,44 @@ import {
 } from 'react-native';
 import { MonoText } from '../components/StyledText';
 import GroceryListsRow from '../components/GroceryListsRow';
-import SortableList from 'react-native-sortable-list';
+//import SortableList from 'react-native-sortable-list';
 
 
-function renderRow(item) {
-  return (
-    <GroceryListsRow 
-      item={item}/>
-  );
 
-}
+export default class HomeScreen extends React.Component {
+  renderRow(item) {
+    return (
+      <GroceryListsRow 
+        item={item}
+        navigation={this.props.navigation}
+        />
+    );
 
-export default function HomeScreen() {
-  var data = [
-  {Name: "List 1"},
-  {Name: "List 2"},
-  {Name: "List 3"},
-  ]
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <FlatList
+  }
+  render() {
+    var data = [
+    {Name: "List 1"},
+    {Name: "List 2"},
+    {Name: "List 3"},
+    ]
+    return (
+      <View style={styles.container}>
+        <ScrollView
           style={styles.container}
-          data={data}
-          renderItem={({ item }) => renderRow(item)}/>
-      </ScrollView>
-
-
-    </View>
-  );
+          contentContainerStyle={styles.contentContainer}>
+          <FlatList
+            style={styles.container}
+            data={data}
+            renderItem={({ item }) => this.renderRow(item)}/>
+        </ScrollView>
+        <Button
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate('List')}
+        />
+      </View>
+    );
+  }
 }
-
-HomeScreen.navigationOptions = {
-  header: null,
-};
 
 function DevelopmentModeNotice() {
   if (__DEV__) {
