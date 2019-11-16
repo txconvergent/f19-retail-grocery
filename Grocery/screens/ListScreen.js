@@ -87,7 +87,7 @@ export default class ListScreen extends Component {
           data={data}
           renderRow={this._renderRow} />
           <Button
-          title="Go to Details"
+          title="Pop"
           onPress={() => data.pop()}
         />
       </View>
