@@ -12,6 +12,7 @@ const config = Platform.select({
 const ListStack = createStackNavigator(
   {
     List: ListScreen,
+    //Home: HomeScreen,
   },
   config
 );
