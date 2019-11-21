@@ -33,50 +33,100 @@ function renderRow(item) {
 
 }
 
-var data = {
+/*var data = {
   0: {
     image: 'https://placekitten.com/200/240',
-    text: 'Chloe',
+    text: 'Watermelon',
   },
   1: {
     image: 'https://placekitten.com/200/201',
-    text: 'Jasper',
+    text: 'Ground Beef',
   },
   2: {
     image: 'https://placekitten.com/200/202',
-    text: 'Pepper',
+    text: 'Peppercorn',
   },
   3: {
     image: 'https://placekitten.com/200/203',
-    text: 'Oscar',
+    text: 'Ice cream',
   },
   4: {
     image: 'https://placekitten.com/200/204',
-    text: 'Dusty',
+    text: 'Fiji Apples',
   },
   5: {
     image: 'https://placekitten.com/200/205',
-    text: 'Spooky',
+    text: 'Mangos',
   },
   6: {
     image: 'https://placekitten.com/200/210',
-    text: 'Kiki',
+    text: 'Kiwi',
   },
   7: {
     image: 'https://placekitten.com/200/215',
-    text: 'Smokey',
+    text: 'Water filter',
   },
   8: {
     image: 'https://placekitten.com/200/220',
-    text: 'Gizmo',
+    text: 'Plastic forks',
   },
   9: {
     image: 'https://placekitten.com/220/239',
-    text: 'Kitty',
+    text: 'Blender',
   },
-};
+};*/ 
+
+var data = [
+   {
+    image: 'https://placekitten.com/200/240',
+    text: 'Watermelon',
+  },
+   {
+    image: 'https://placekitten.com/200/201',
+    text: 'Ground Beef',
+  },
+  {
+    image: 'https://placekitten.com/200/202',
+    text: 'Peppercorn',
+  },
+  {
+    image: 'https://placekitten.com/200/203',
+    text: 'Ice cream',
+  },
+  {
+    image: 'https://placekitten.com/200/204',
+    text: 'Fiji Apples',
+  },
+  {
+    image: 'https://placekitten.com/200/205',
+    text: 'Mangos',
+  },
+  {
+    image: 'https://placekitten.com/200/210',
+    text: 'Kiwi',
+  },
+  {
+    image: 'https://placekitten.com/200/215',
+    text: 'Water filter',
+  },
+  {
+    image: 'https://placekitten.com/200/220',
+    text: 'Plastic forks',
+  },
+  {
+    image: 'https://placekitten.com/220/239',
+    text: 'Blender',
+  },
+  ];
 
 export default class ListScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: data
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -84,11 +134,11 @@ export default class ListScreen extends Component {
         <SortableList
           style={styles.list}
           contentContainerStyle={styles.contentContainer}
-          data={data}
+          data={this.state.data}
           renderRow={this._renderRow} />
           <Button
-          title="Pop"
-          onPress={() => data.pop()}
+          title="remove item"
+          onPress={() => this.setState(previousState => ({data: previousState.data.splice(5, 1)}))}
         />
       </View>
     );
@@ -155,12 +205,14 @@ class Row extends Component {
         styles.row,
         this._style,
       ]}>
-        <Image source={{uri: data.image}} style={styles.image} />
+        <Image source={{uri: data.image}} /*style={styles.image} *//>
         <Text style={styles.text}>{data.text}</Text>
       </Animated.View>
     );
   }
 }
+
+  
 
 
 
@@ -315,6 +367,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 18,
+    marginRight: 30,
     color: '#222222',
   },
 });
