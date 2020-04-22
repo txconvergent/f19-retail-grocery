@@ -18,7 +18,7 @@ export default class GroceryListsRow extends React.Component {
 
   render() {
   	return (
-      <View style={styles.container}>
+      <View style={styles.item}>
         <Text style={styles.textStyle} onclick={this.navigateToList()}>
           {this.name}
         </Text>
@@ -38,6 +38,18 @@ const styles = StyleSheet.create({
   textStyle: {
   	fontFamily: 'Times New Roman',
   	fontSize: 32,
+  	color: '#d9e6ff'
+  },
+    item: {
+    //backgroundColor: '#91b8ff',
+    borderRadius: 10,
+    //backgroundColor: '#5b579c',
+	backgroundColor: 'rgb(91,87,156)',
+	backgroundColor: 'linear-gradient(90deg, rgba(91,87,156,1) 0%, rgba(93,93,255,1) 35%, rgba(0,212,255,1) 100%)',
+  	//borderWidth: 1,
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
   }
   // sectionHeader: {
   //   paddingTop: 2,
